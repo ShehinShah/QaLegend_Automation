@@ -21,7 +21,7 @@ public class qalegendClientPage {
 	@FindBy(xpath="//a[text()=' Add client']")
 	WebElement addBtn;
 	
-	@FindBy(xpath="//div[@class='form-group']//input")
+	@FindBy(xpath="(//div[@class='form-group']//input)[1]")
 	WebElement CompanyName;
 	
 	@FindBy(xpath="//div[@class='form-group'][2]//textarea")
@@ -110,6 +110,9 @@ public class qalegendClientPage {
 	
 	@FindBy(xpath="//div[text()='AUD']")
 	WebElement currencyOpn;
+	
+	@FindBy(xpath="(//a[text()='Automation'])[1]")
+	WebElement projectAssert;
 	
 	
 
@@ -270,11 +273,6 @@ public void EntercurrencyField() {
 	page_utility.clickOnElement(currency);  
 }
 
-
-public void EnterCurropn() {
-	
-	page_utility.clickOnElement(currencyOpn); 
-}
 public boolean currencySymbolField() {
 	
 	boolean status11=page_utility.isElementDisplayed(currencySymbol);
@@ -395,6 +393,17 @@ public WebElement deadLineField() {
 public void labelOptionField() {
 	
 	page_utility.clickOnElement(labelOption);
+}
+
+public boolean projectAssertcheck() {
+	
+	boolean status=page_utility.isElementDisplayed(projectAssert);
+	return status;
+}
+
+public void clickCurrencyOpn() {
+	
+	page_utility.clickOnElement(currencyOpn);
 }
 
 }

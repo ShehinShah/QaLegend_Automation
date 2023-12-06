@@ -28,11 +28,11 @@ public class timeSheet {
 	@FindBy(xpath="//input[@name='end_date']")
 	WebElement endDate;
 	
-	@FindBy(xpath="//input[@id='end_time']")    
+	@FindBy(xpath="//input[@name='end_time']")  
 	WebElement endTime;
 	
 	
-	@FindBy(xpath="//textarea[@name='note']")
+	@FindBy(xpath="//textarea[@id='note']")
 	WebElement notes;
 	
 	@FindBy(xpath="(//span[@class='select2-chosen'])[4]")   //span[text()='Task']
@@ -44,8 +44,9 @@ public class timeSheet {
 	@FindBy(xpath="//button[text()=' Save']")
 	WebElement Savebtn;
 	
-	@FindBy(xpath="//div[@class='modal-body clearfix']")
-	WebElement body;
+	@FindBy(xpath="(//a[text()=' Lekshmi Nair'])[2]")
+	WebElement assertField;
+	
 	
 
 	public timeSheet(WebDriver driver) {
@@ -123,8 +124,11 @@ public class timeSheet {
 		page_utility.clickOnElement(Savebtn);
 	}
 	
-	public void bodyclck() {
+	public boolean assertFieldlocate()
+	{
 		
-		page_utility.clickOnElement(body);
-	}
+		boolean status =page_utility.isElementDisplayed(assertField);
+		return status;
+	}	
+	
 }

@@ -72,6 +72,7 @@ public boolean forgetPwdPageFileldAssert() {
 	return status;
 }
 
+
 public boolean  faildMsg() {
 	
 	boolean status=page_utility.isElementDisplayed(failed);

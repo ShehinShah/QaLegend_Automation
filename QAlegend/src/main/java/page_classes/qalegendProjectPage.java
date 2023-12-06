@@ -31,7 +31,7 @@ public class qalegendProjectPage {
 	@FindBy(xpath="//a[text()='Tasks List']")
 	WebElement TaskList;
 	
-	@FindBy(xpath="(//div[@id='project-tasks-kanban-section']//preceding::a)[92]")
+	@FindBy(xpath="(//div[@id='project-tasks-kanban-section']//preceding::a)[96]")
 	WebElement addTask;
 	
 	@FindBy(xpath="//input[@name='title']")
@@ -85,6 +85,9 @@ public class qalegendProjectPage {
 	
 	@FindBy(xpath="//div[text()='Lekshmi Nair']")
 	WebElement assignOpn;
+	
+	@FindBy(xpath="//a[text()='Testing']")
+	WebElement assertField;
 
 
 	
@@ -227,8 +230,15 @@ public class qalegendProjectPage {
 		
 		page_utility.clickOnElement(assignOpn);
 	}
-     public void escapKeyPress() {
+	
+	public void escapKeyPress() {
 		
 		page_utility.escpKeyPress(driver);
+	}
+	public boolean locateAssert() {
+		
+		boolean status=page_utility.isElementDisplayed(assertField);
+		return status;
+		
 	}
 }

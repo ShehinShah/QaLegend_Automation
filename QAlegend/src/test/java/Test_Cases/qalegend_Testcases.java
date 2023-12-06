@@ -3,6 +3,8 @@
  */
 package Test_Cases;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -147,22 +149,23 @@ public void tc05() throws IOException {
 	page_utility.clickOnElement(clientPage.modalField());
 	clientPage.ScrollcheckBoxField();
 	clientPage.EntervatField1();
-	clientPage.EnterclientField();
+	//clientPage.EnterclientField();
 	clientPage.EntercurrencyField();
-	clientPage.EnterCurropn();
-	clientPage.EntercurrencySymbolField();
+	clientPage.clickCurrencyOpn();
+	//clientPage.EntercurrencySymbolField();
 	clientPage.clickCheckBoxField();
 	clientPage.clickSaveButton();
 	
 }
 
 @Test
-public void tc06() throws IOException {
+public void tc06() throws IOException { 
 	login_page.userLogin(ExcelUtility.getString(1, 0, excelFilePath, "Users"), ExcelUtility.getNumeric(1, 1, excelFilePath, "Users"));
 	clientPage.clickOnClientTab();
 	page_utility.enterText(clientPage.clientSearch(), ExcelUtility.getString(1, 0, excelFilePath, "Client_detail"));
-	page_utility.clickOnElement(clientPage.clientNameSearch());
+	page_utility.clickOnElement(clientPage.clientNameSearch());	
 	page_utility.isElementDisplayed(clientPage.clientContactTab());
+	
 }
 
 @Test
@@ -182,6 +185,8 @@ public void tc07() throws IOException {
 	page_utility.enterText(clientPage.labelField(), ExcelUtility.getString(1, 3, excelFilePath, "Project_details"));
 	clientPage.labelOptionField();  
 	clientPage.clickSaveButton();
+	boolean status=clientPage.projectAssertcheck();
+	Assert.assertEquals(status, true);
 	
 }
 
@@ -220,6 +225,8 @@ public void tc09() throws IOException
 	page_utility.enterText(projectPage.deadLineField(), prop.getProperty("End_Date"));
 	projectPage.escapKeyPress();
 	projectPage.clickOnSaveButtons();
+	boolean status=projectPage.locateAssert();
+	Assert.assertEquals(status,true);
 	
 }
 
@@ -240,14 +247,16 @@ public void tc10() throws IOException
 	page_utility.enterText(timesheetpage.endDateField(), prop.getProperty("End_Date"));
 	timesheetpage.escapKeyPress();
 	timesheetpage.enterStartTime(prop.getProperty("Start_time"));
-	timesheetpage.escapKeyPress();	
-	timesheetpage.EnterendtimeField( prop.getProperty("End_time"));  //not able to locate
-	timesheetpage.escapKeyPress();
-	timesheetpage.bodyclck();
+	//timesheetpage.escapKeyPress();	
+	//timesheetpage.EnterendtimeField( prop.getProperty("End_time"));  
+	//timesheetpage.escapKeyPress();
 	page_utility.enterText(timesheetpage.noteField(), ExcelUtility.getString(1, 3, excelFilePath, "Project_details"));
 	timesheetpage.clickOnTaskField();
 	timesheetpage.enterTextinTaskOpn();
 	timesheetpage.Savebutton();
+	timesheetpage.escapKeyPress();
+	boolean status=timesheetpage.assertFieldlocate();
+	Assert.assertEquals(status, true);
 
 
 }

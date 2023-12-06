@@ -1,8 +1,5 @@
 package Test_Cases;
 
-import java.io.IOException;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -39,31 +36,7 @@ public class listeners extends Base_Class implements ITestListener{
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestFailure(result);
 		extentTest.get().fail(result.getThrowable());
-		String TestMethodName= result.getMethod().getMethodName();
-		try {
-			driver=(WebDriver)result.getTestClass().getRealClass().getDeclaredField("driver").get(result.getInstance());
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			extentTest.get().addScreenCaptureFromPath(getScreenShotpath(TestMethodName, driver), result.getMethod().getMethodName());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		extentTest.get().log(Status.FAIL, "Test Case Failed");
-		
 	}
 
 	@Override
